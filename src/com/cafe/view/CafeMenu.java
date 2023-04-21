@@ -6,25 +6,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.cafe.controller.CafeManager;
-import com.cafe.dto.Beverage;
-import com.cafe.dto.TypeDTO;
 
 /**
  * 카페 메뉴를 보여주기 위한 클래스
  */
 public class CafeMenu {
     Scanner sc = new Scanner(System.in);
-    Map<String, Integer> map = new HashMap<>(); 
     CafeManager cm;
-
-    /* 음료들의 초기값을 초기화 블럭을 이용하여 설정 */
-    {
-        map.put("아메리카노", 2000);
-        map.put("카페라떼", 3000);
-        map.put("바닐라라떼", 3500);
-        map.put("초코라떼", 3500);
-        map.put("아이스티", 2000);
-    }
 
     /* 생성자에서 CafeManager 초기화 */
     public CafeMenu() {
@@ -77,15 +65,15 @@ public class CafeMenu {
 
         loop: 
         while (true) {
-            System.out.println("========= 메뉴 =========");
+            System.out.println("=========== 메뉴 ===========");
             System.out.println("[1] 아메리카노");
             System.out.println("[2] 카페라떼");
             System.out.println("[3] 바닐라라떼");
             System.out.println("[4] 초코라떼");
             System.out.println("[5] 아이스티");
             System.out.println("[6] 결정\t\t[7] 취소");
-            System.out.println("=======================");
-            cm.printType();
+            System.out.println("===========================");
+            cm.printMenu();
 
             while (true) {
                 try {
@@ -100,43 +88,33 @@ public class CafeMenu {
 
                 break;
             }
-            
-            // FIXME : 다른 방식으로 짤 수 없는지 고민해보자
-            switch (num) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5: selectMenu(num); break;
-                case 6: cm.option(); break;
-                case 7:
-                    System.out.println("주문을 취소했습니다.");
-                    cm.deleteMenu();
-                    return;
 
-                default:
-                    System.out.println("잘못된 숫자를 입력하셨습니다.");
-                    return;
+            selectMenu(num);
+
+            if (num == 6) {
+                cm.option();
+            } else if (num == 7) {
+                System.out.println("주문을 취소했습니다.");
+                cm.deleteMenu();
+            } else {
+                System.out.println("잘못된 숫자를 입력하셨습니다.");
             }
         }
     }
 
     public void selectMenu(int num) {
-        String name;
-        switch (num) {
-            case 1: name = "아메리카노"; break;
-            case 2: name = "카페라떼"; break;
-            case 3: name = "바닐라라떼"; break;
-            case 4: name = "초코라떼"; break;
-            case 5: name = "아이스티"; break;
-            default: return;
+        Map<Integer, String> menu = new HashMap<>();
+        menu.put(1, "아메리카노");
+        menu.put(2, "카페라떼");
+        menu.put(3, "바닐라라떼");
+        menu.put(4, "초코라떼");
+        menu.put(5, "아이스티");
+
+        String name = menu.get(num);
+        if (name == null) {
+            return;
         }
 
-        cm.addType(addMenu(name));
-    }
-
-    public TypeDTO addMenu(String name) {
-
-        return new Beverage(name, map.get(name), "regular");
+        cm.addMenu(name);
     }
 }

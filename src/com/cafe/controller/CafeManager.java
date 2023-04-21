@@ -1,36 +1,51 @@
 package com.cafe.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
-import com.cafe.dto.OptionDTO;
+import com.cafe.dto.Beverage;
 import com.cafe.dto.TypeDTO;
 
 public class CafeManager {
 	 private List<TypeDTO> typelist;
-	 Scanner sc = new Scanner(System.in);
+	 private Scanner sc = new Scanner(System.in);
+     private Map<String, Integer> prices = new HashMap<>(); 
+     
+     /* 초기화 블럭을 이용해 초기값 설정 */
+    {
+        prices.put("아메리카노", 2000);
+        prices.put("카페라떼", 3000);
+        prices.put("바닐라라떼", 3500);
+        prices.put("초코라떼", 3500);
+        prices.put("아이스티", 2000);
+    }
 
      public CafeManager() {
         typelist  = new ArrayList<>();
      }
 
-     public void addType(TypeDTO type) {
-        typelist.add(type);
+     public void addMenu(String name) {
+        int price = prices.get(name);
+        TypeDTO menu = new Beverage(name, price, "regular");
+
+        typelist.add(menu);
      }
 
-     public void printType() {
+     public void printMenu() {
         if (typelist.size() == 0) {
             return;
         }
 
         int i = 1;
-        System.out.println("======== 선택하신 음료 ========");
+        System.out.println("====== 선택하신 음료 ======");
         for (TypeDTO typeDTO : typelist) {
             System.out.println(i + " : " + typeDTO.getName());
             i++;
         }
-        System.out.println("==============================");
+        System.out.println("===========================");
      }
 
      public void deleteMenu() {
