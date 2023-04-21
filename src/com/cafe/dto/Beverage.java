@@ -2,10 +2,8 @@ package com.cafe.dto;
 
 public class Beverage extends OptionDTO {
 
-    public Beverage(String name, int price, String size, 
-            int addShot, boolean isSyrup, boolean isIce, 
-            boolean isCold, boolean isSizeUp) {
-        super(name, price, size, addShot, isSyrup, isIce, isCold, isSizeUp);
+    public Beverage(String name, int price, String size) {
+        super(name, price, size, 0, false, false, false, false);
     }
 
     @Override
