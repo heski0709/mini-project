@@ -4,6 +4,6 @@ public class CafeMain {
     public static void main(String[] args) {
         
         new CafeMain();
-        shgwdgy8u
+        shgwdgy8
     }
 }
