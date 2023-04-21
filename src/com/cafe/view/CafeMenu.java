@@ -96,7 +96,6 @@ public class CafeMenu {
                 case 4:
                 case 5: selectMenu(num); break;
                 case 6: cm.option(); break;
-                    break;
                 case 7:
                     System.out.println("주문을 취소했습니다.");
                     return;
