@@ -110,8 +110,8 @@ public class CafeMenu {
                 case 5: selectMenu(num); break;
                 case 6: cm.option(); break;
                 case 7:
-                // FIXME : 주문취소 시 CafeManager의 typelist의 값 clear하기
                     System.out.println("주문을 취소했습니다.");
+                    cm.deleteMenu();
                     return;
 
                 default:

@@ -32,6 +32,12 @@ public class CafeManager {
         }
         System.out.println("==============================");
      }
+
+     public void deleteMenu() {
+        for (int i = 0; i < typelist.size(); i++) {
+            typelist.remove(i);
+        }
+     }
      
      public void option() {
 
