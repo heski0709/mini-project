@@ -34,24 +34,36 @@ public class CafeMenu {
     /* 메뉴 출력 메서드 */
     public void menu() {
         System.out.println("=======================");
-        System.out.println("1. 회원주문");
-        System.out.println("2. 비회원주문");
+        System.out.println("[1] 회원주문");
+        System.out.println("[2] 비회원주문");
         System.out.println("=======================");
 
         int num;
 
-        /* 숫자가 아닌 문자를 입력했을 경우 다시 loop */
-        num1:
         while (true) {
+            /* 
+             * Scanner로 숫자가 아닌 문자가 들어왔을 시 
+             * InputMistmatchException 에러로 프로그램이 
+             * 강제종료되지 않고 루프를 돌게 함
+             */
             try {
                 num = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("숫자만 입력해주세요.");
-                continue num1;   
+                continue;   
             } finally {
                 sc.nextLine();
             }
 
+            /*
+             * 입력 값이 1인 경우 :
+             * CafeManager의 전화번호 입력 메서드를 실행
+             * 초기값으로 등록되어 있는 회원들 중 전화번호가 같은 사람이 있다면
+             * CafeManager의 Member타입 변수에 대입시킴
+             * 
+             * 입력값이 2인 경우 :
+             * 아무 동작을 하지않고 메뉴창으로 넘어감
+             */
             switch (num) {
                 case 1: break;
                 case 2: break;
@@ -66,12 +78,12 @@ public class CafeMenu {
         loop: 
         while (true) {
             System.out.println("========= 메뉴 =========");
-            System.out.println("1. 아메리카노");
-            System.out.println("2. 카페라떼");
-            System.out.println("3. 바닐라라떼");
-            System.out.println("4. 초코라떼");
-            System.out.println("5. 아이스티");
-            System.out.println("6. 결정\t\t7.취소");
+            System.out.println("[1] 아메리카노");
+            System.out.println("[2] 카페라떼");
+            System.out.println("[3] 바닐라라떼");
+            System.out.println("[4] 초코라떼");
+            System.out.println("[5] 아이스티");
+            System.out.println("[6] 결정\t\t[7] 취소");
             System.out.println("=======================");
             cm.printType();
 
@@ -89,6 +101,7 @@ public class CafeMenu {
                 break;
             }
             
+            // FIXME : 다른 방식으로 짤 수 없는지 고민해보자
             switch (num) {
                 case 1:
                 case 2:
@@ -97,6 +110,7 @@ public class CafeMenu {
                 case 5: selectMenu(num); break;
                 case 6: cm.option(); break;
                 case 7:
+                // FIXME : 주문취소 시 CafeManager의 typelist의 값 clear하기
                     System.out.println("주문을 취소했습니다.");
                     return;
 
@@ -118,15 +132,11 @@ public class CafeMenu {
             default: return;
         }
 
-        cm.addType(addType(name));
+        cm.addType(addMenu(name));
     }
 
-    public TypeDTO addType(String name) {
+    public TypeDTO addMenu(String name) {
 
-        return new Beverage(name, map.get(name), "regular", 0, false, false, false, false);
+        return new Beverage(name, map.get(name), "regular");
     }
-
-    /* 선택한 메뉴를 출력하는 부분 */
-
-    /* 결정 */
 }
