@@ -49,9 +49,7 @@ public class CafeManager {
      }
 
      public void deleteMenu() {
-        for (int i = 0; i < typelist.size(); i++) {
-            typelist.remove(i);
-        }
+        typelist.clear();
      }
      
      public void option() {
