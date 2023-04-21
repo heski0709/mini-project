@@ -4,6 +4,7 @@ public class CafeMain {
     public static void main(String[] args) {
         
         new CafeMain();
-        new CafeMain2();
+        shgwdgy8
     }
 }
+>>>>>>> origin/jaehyeong
