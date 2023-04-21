@@ -1,4 +1,4 @@
-package com.main.controller;
+package com.cafe.controller;
 
 public class CafeManager {
     

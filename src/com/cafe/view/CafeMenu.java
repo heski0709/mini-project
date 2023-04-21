@@ -1,9 +1,4 @@
-package com.main.view;
-
-import java.util.Scanner;
-
-import com.main.controller.CafeManager;
-
+package com.cafe.view;
 public class CafeMenu {
 
 }
