@@ -53,10 +53,10 @@ public class CafeManager {
      }
      
      public void option() {
-
+    	 int paymentPrice = ((Beverage)menulist).getPrice();
          while (true) {
 
-             System.out.println(" [1] ice와 hot 둘중 하나를 골라주시길 바랍니다. ");
+             System.out.println(" [1] ice와 hot 둘중 하나를 골라주시길 바랍니다.");
              System.out.println(" [2] 샷을 추가합니다 + 500원 ");
              System.out.println(" [3] 휘핑을 추가합니다. ");
              System.out.println(" [4] 시럽을 추가합니다. ");
@@ -73,11 +73,14 @@ public class CafeManager {
                      System.out.println("ice [1] 와 hot [2] 원하는 옵션을 입력해주세요 : ");
                      int icehot = sc.nextInt();
                      sc.nextLine();
-
+                     
                      if (icehot == 1) {
                          System.out.println(" ice의 옵션을 선택합니다. ");
+                         ((Beverage)menulist).setCold(true);
+                         
                      } else if (icehot == 2) {
                          System.out.println(" hot의 옵션을 선택합니다.");
+                         ((Beverage)menulist).setCold(false);
                      } else {
                          System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
                      }
@@ -87,32 +90,31 @@ public class CafeManager {
                  case 2: {
                      System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
                      // 음료 샷 멤버변수의 값을 1증가시키는 메소드를 실행 시킨다.
-                     // price의 값을 500을 증가 시킨다.
+                     paymentPrice += 500;
                      showOptionInformation();
                      break;
                  }
                  case 3: {
                      System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
-                     // 음료 휘핑의 멤버변수의 값을 true로 바꿉니다.
                      showOptionInformation();
                      break;
                  }
                  case 4: {
                      System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
-                     // 음료 시럽의 멤버변수의 값을 true로 바꿉니다.
+                     ((Beverage)menulist).setSyrup(true);
                      showOptionInformation();
                      break;
                  }
                  case 5: {
                      System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
-                     // 음료의 얼음추가 변수의 값을 true로 바꿉니다.
+                     ((Beverage)menulist).setIce(true);
                      showOptionInformation();
                      break;
                  }
                  case 6: {
                      System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
-                     // 음료의 사이즈의 변수 의 값을 true로 변경을 합니다.
-                     // price의 값을 500을 증가 시킨다.
+                     ((Beverage)menulist).setSizeUp(true);
+                     paymentPrice += 500;
                      showOptionInformation();
                      break;
                  }
@@ -120,7 +122,7 @@ public class CafeManager {
                      showOptionInformation();
                      System.out.println(" 결제 페이지로 넘어가겠습니다. ");
 
-                     payment();
+                     payment(paymentPrice);
                      break;
                  }
                  default:
@@ -129,8 +131,8 @@ public class CafeManager {
          }
      }
 
-     public void payment() {
-
+     public void payment(int paymentPrice) {
+    	 
          while (true) {
 
              System.out.println("========== 결제 화면 ==========");
@@ -146,15 +148,15 @@ public class CafeManager {
 
              switch (payment) {
                  case 1: {
-                     System.out.println(" .getprice" + "원이 정상적으로 결제 되었습니다.");
-                     System.out.println(" 포인트" + /* pointsEarned() */ "이 적립이 되었습니다.");
-                     // setpoint(getpoint + pointsEarned);
+                     System.out.println(paymentPrice + "원이 정상적으로 결제 되었습니다.");
+                     System.out.println(" 포인트" + pointsEarned(((Beverage)menulist).getPrice()) + "이 적립이 되었습니다.");
+                     // setpoint(getpoint + pointsEarned);     멤버의 setpoint
                      System.out.println(" 현재 고객이 가지고 있는 포인트는" + /* get.point ) */ "입니다. ");
                  }
                      return;
                  case 2: {
                      System.out.println("포인트 " + /* getpoint */ "를 사용하여 할인을 받아"
-                             + /* (.getprice - getpoint( */ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
+                             + /* (paymentPrice - getpoint() */ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
                  }
                      return;
                  default:
