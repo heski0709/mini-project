@@ -65,13 +65,13 @@ public class CafeMenu {
 
         loop: 
         while (true) {
-            System.out.println("=========== 메뉴 ===========");
+            System.out.println("=========== 메뉴 ==========");
             System.out.println("[1] 아메리카노");
             System.out.println("[2] 카페라떼");
             System.out.println("[3] 바닐라라떼");
             System.out.println("[4] 초코라떼");
             System.out.println("[5] 아이스티");
-            System.out.println("[6] 결정\t\t[7] 취소");
+            System.out.println("[6] 결정\t   [7] 취소");
             System.out.println("===========================");
             cm.printMenu();
 

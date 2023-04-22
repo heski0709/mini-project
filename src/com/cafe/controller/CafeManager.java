@@ -7,10 +7,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.cafe.dto.Beverage;
-import com.cafe.dto.TypeDTO;
+import com.cafe.dto.CafeMenuDTO;
 
 public class CafeManager {
-	 private List<TypeDTO> typelist;
+	 private List<CafeMenuDTO> menulist;
 	 private Scanner sc = new Scanner(System.in);
      private Map<String, Integer> prices = new HashMap<>(); 
      
@@ -24,24 +24,24 @@ public class CafeManager {
     }
 
      public CafeManager() {
-        typelist  = new ArrayList<>();
+        menulist  = new ArrayList<>();
      }
 
      public void addMenu(String name) {
         int price = prices.get(name);
-        TypeDTO menu = new Beverage(name, price, "regular");
+        CafeMenuDTO menu = new Beverage(name, price, "regular");
 
-        typelist.add(menu);
+        menulist.add(menu);
      }
 
      public void printMenu() {
-        if (typelist.size() == 0) {
+        if (menulist.size() == 0) {
             return;
         }
 
         int i = 1;
         System.out.println("====== 선택하신 음료 ======");
-        for (TypeDTO typeDTO : typelist) {
+        for (CafeMenuDTO typeDTO : menulist) {
             System.out.println(i + " : " + typeDTO.getName());
             i++;
         }
@@ -49,7 +49,7 @@ public class CafeManager {
      }
 
      public void deleteMenu() {
-        typelist.clear();
+        menulist.clear();
      }
      
      public void option() {

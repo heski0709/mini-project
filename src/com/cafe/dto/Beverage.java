@@ -1,6 +1,6 @@
 package com.cafe.dto;
 
-public class Beverage extends OptionDTO {
+public class Beverage extends BeverageOptionDTO {
 
     public Beverage(String name, int price, String size) {
         super(name, price, size, 0, false, false, false, false);

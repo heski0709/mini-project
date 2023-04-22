@@ -1,6 +1,6 @@
 package com.cafe.dto;
 
-public class OptionDTO extends TypeDTO {
+public class BeverageOptionDTO extends CafeMenuDTO {
     private String size;
     private int addShot;
     private boolean isSyrup;
@@ -8,9 +8,9 @@ public class OptionDTO extends TypeDTO {
     private boolean isCold;
     private boolean isSizeUp;
 
-    protected OptionDTO() {}
+    protected BeverageOptionDTO() {}
 
-    public OptionDTO(String name, int price, String size, 
+    public BeverageOptionDTO(String name, int price, String size, 
             int addShot, boolean isSyrup, boolean isIce, 
             boolean isCold, boolean isSizeUp) {
         super(name, price);

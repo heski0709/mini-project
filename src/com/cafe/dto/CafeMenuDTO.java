@@ -1,12 +1,12 @@
 package com.cafe.dto;
 
-public class TypeDTO {
+public class CafeMenuDTO {
     private String name;
     private int price;
 
-    protected TypeDTO() {}
+    protected CafeMenuDTO() {}
 
-    protected TypeDTO(String name, int price) {
+    protected CafeMenuDTO(String name, int price) {
         this.name = name;
         this.price = price;
     }
