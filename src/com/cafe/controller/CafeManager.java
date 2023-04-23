@@ -89,7 +89,7 @@ public class CafeManager {
 
                  case 2: {
                      System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
-                     // 음료 샷 멤버변수의 값을 1증가시키는 메소드를 실행 시킨다.
+                     ((Beverage)menulist).setAddShot(((Beverage)menulist).getAddShot()+1);
                      paymentPrice += 500;
                      showOptionInformation();
                      break;
