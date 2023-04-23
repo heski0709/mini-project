@@ -54,7 +54,6 @@ public class CafeManager {
      
      public void option() {
     	 int paymentPrice = menulist.get(0).getPrice();
-    	 
          while (true) {
 
              System.out.println(" [1] ice와 hot 둘중 하나를 골라주시길 바랍니다.");
