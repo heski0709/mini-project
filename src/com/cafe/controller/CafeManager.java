@@ -76,11 +76,11 @@ public class CafeManager {
                      
                      if (icehot == 1) {
                          System.out.println(" ice의 옵션을 선택합니다. ");
-                         ((Beverage)menulist).setCold(true);
+                         ((Beverage)menulist.get(0)).setCold(true);
                          
                      } else if (icehot == 2) {
                          System.out.println(" hot의 옵션을 선택합니다.");
-                         ((Beverage)menulist).setCold(false);
+                         ((Beverage)menulist.get(0)).setCold(false);
                      } else {
                          System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
                      }
@@ -89,31 +89,32 @@ public class CafeManager {
 
                  case 2: {
                      System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
-                     ((Beverage)menulist).setAddShot(((Beverage)menulist).getAddShot()+1);
+                     ((Beverage)menulist.get(0)).setAddShot(((Beverage)menulist.get(0)).getAddShot()+1);
                      paymentPrice += 500;
                      showOptionInformation();
                      break;
                  }
                  case 3: {
                      System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
+                     ((Beverage)menulist.get(0)).setWhipping(true);
                      showOptionInformation();
                      break;
                  }
                  case 4: {
                      System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
-                     ((Beverage)menulist).setSyrup(true);
+                     ((Beverage)menulist.get(0)).setSyrup(true);
                      showOptionInformation();
                      break;
                  }
                  case 5: {
                      System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
-                     ((Beverage)menulist).setIce(true);
+                     ((Beverage)menulist.get(0)).setIce(true);
                      showOptionInformation();
                      break;
                  }
                  case 6: {
                      System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
-                     ((Beverage)menulist).setSizeUp(true);
+                     ((Beverage)menulist.get(0)).setSizeUp(true);
                      paymentPrice += 500;
                      showOptionInformation();
                      break;
@@ -149,7 +150,7 @@ public class CafeManager {
              switch (payment) {
                  case 1: {
                      System.out.println(paymentPrice + "원이 정상적으로 결제 되었습니다.");
-                     System.out.println(" 포인트" + pointsEarned(((Beverage)menulist).getPrice()) + "이 적립이 되었습니다.");
+                     System.out.println(" 포인트" + pointsEarned(((Beverage)menulist.get(0)).getPrice()) + "이 적립이 되었습니다.");
                      // setpoint(getpoint + pointsEarned);     멤버의 setpoint
                      System.out.println(" 현재 고객이 가지고 있는 포인트는" + /* get.point ) */ "입니다. ");
                  }
