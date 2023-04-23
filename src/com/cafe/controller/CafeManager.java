@@ -64,22 +64,22 @@ public class CafeManager {
              System.out.println(" [6] 사이즈를 업 합니다 + 500원 ");
              System.out.println(" [0] 결제로 넘어가기 ");
              System.out.println();
-             System.out.println(" 숫자를 입력해주시길 바랍니다. ");
+             System.out.print(" 원하시는 숫자를 입력해주시길 바랍니다 :  ");
              int in = sc.nextInt();
 
              switch (in) {
 
                  case 1: {
-                     System.out.println("ice [1] 와 hot [2] 원하는 옵션을 입력해주세요 : ");
+                     System.out.print("ice [1] 와 hot [2] 원하는 옵션을 입력해주세요 : ");
                      int icehot = sc.nextInt();
                      sc.nextLine();
                      
                      if (icehot == 1) {
-                         System.out.println(" ice의 옵션을 선택합니다. ");
+                         System.out.println(" ice의 옵션이 선택되었습니다. ");
                          ((Beverage)menulist.get(0)).setCold(true);
                          
                      } else if (icehot == 2) {
-                         System.out.println(" hot의 옵션을 선택합니다.");
+                         System.out.println(" hot의 옵션이 선택되었습니다.");
                          ((Beverage)menulist.get(0)).setCold(false);
                      } else {
                          System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
@@ -175,7 +175,7 @@ public class CafeManager {
 
      public void showOptionInformation() {
          System.out.println("=============================================");
-         System.out.println("현재 선택하신 메뉴의 옵션은 " /*
+         System.out.println("현재 선택하신 메뉴의 옵션은 " +((Beverage)menulist.get(0)).toString()/*
                                                 * 매개변수로 받은 모든 멤버변수
                                                 * a는 A b는 B c는 c 입니다.
                                                 */);

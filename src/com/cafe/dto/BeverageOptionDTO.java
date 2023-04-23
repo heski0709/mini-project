@@ -24,10 +24,18 @@ public class BeverageOptionDTO extends CafeMenuDTO {
         this.isWhipping = isWhipping;
     }
 
+    public String checkice() {
+    	if(isCold == true) {
+    		return " ice ";
+    	}
+    	else{
+    		return " hot ";
+    	}
+    }
     @Override
     public String toString() {
         return super.toString() + ", size=" + size + ", addShot=" + addShot
-                + ", isSyrup=" + isSyrup + ", isIce=" + isIce + ", isCold=" + isCold
+                + ", isSyrup=" + isSyrup + ", isIce=" + isIce + ", isCold=" + checkice()
                 + ", isSizeUp=" + isSizeUp + ", isWhipping=" + isWhipping;
     }
 
