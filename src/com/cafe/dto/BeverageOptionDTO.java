@@ -72,7 +72,7 @@ public class BeverageOptionDTO extends CafeMenuDTO {
     @Override
     public String toString() {
         return super.toString() + ", size=" + checkSize() + ", addShot=" + addShot
-                + ", isSyrup=" + checkSyrup() + ", isIce=" + checkICE() + ", isCold=" + checkCold()
+                + ", isSyrup=" + checkSyrup() + " \nisIce= " + checkICE() + ", isCold=" + checkCold()
                 + ", isWhipping =" + checkWhipping();
     }
 

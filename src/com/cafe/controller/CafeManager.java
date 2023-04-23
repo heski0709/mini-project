@@ -175,7 +175,7 @@ public class CafeManager {
 
      public void showOptionInformation() {
          System.out.println("=============================================");
-         System.out.println("현재 선택하신 메뉴의 옵션은 " +((Beverage)menulist.get(0)).toString()/*
+         System.out.println("현재 선택하신 메뉴의 옵션은 \n" +((Beverage)menulist.get(0)).toString()/*
                                                 * 매개변수로 받은 모든 멤버변수
                                                 * a는 A b는 B c는 c 입니다.
                                                 */);
