@@ -24,7 +24,34 @@ public class BeverageOptionDTO extends CafeMenuDTO {
         this.isWhipping = isWhipping;
     }
 
-    public String checkice() {
+    public String checkSize() {
+    	if(isSizeUp == true) {
+    		return " large ";
+    	}
+    	else{
+    		return " regular ";
+    	}
+    }
+    
+    public String checkSyrup() {
+    	if(isSyrup == true) {
+    		return " 시럽 추가됨 ";
+    	}
+    	else{
+    		return " 시럽 없음 ";
+    	}
+    }
+    
+    public String checkICE() {
+    	if(isCold == true) {
+    		return " 얼음 추가됨 ";
+    	}
+    	else{
+    		return " 얼음 추가 없음 ";
+    	}
+    }
+    
+    public String checkCold() {
     	if(isCold == true) {
     		return " ice ";
     	}
@@ -32,11 +59,21 @@ public class BeverageOptionDTO extends CafeMenuDTO {
     		return " hot ";
     	}
     }
+    
+    public String checkWhipping() {
+    	if(isWhipping == true) {
+    		return " 휘핑 추가됨 ";
+    	}
+    	else{
+    		return " 휘핑 없음 ";
+    	}
+    }
+    
     @Override
     public String toString() {
-        return super.toString() + ", size=" + size + ", addShot=" + addShot
-                + ", isSyrup=" + isSyrup + ", isIce=" + isIce + ", isCold=" + checkice()
-                + ", isSizeUp=" + isSizeUp + ", isWhipping=" + isWhipping;
+        return super.toString() + ", size=" + checkSize() + ", addShot=" + addShot
+                + ", isSyrup=" + checkSyrup() + ", isIce=" + checkICE() + ", isCold=" + checkCold()
+                + ", isWhipping =" + checkWhipping();
     }
 
     public String getSize() {
