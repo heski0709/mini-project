@@ -7,12 +7,13 @@ public class BeverageOptionDTO extends CafeMenuDTO {
     private boolean isIce;
     private boolean isCold;
     private boolean isSizeUp;
+    private boolean isWhipping;
 
     protected BeverageOptionDTO() {}
 
     public BeverageOptionDTO(String name, int price, String size, 
             int addShot, boolean isSyrup, boolean isIce, 
-            boolean isCold, boolean isSizeUp) {
+            boolean isCold, boolean isSizeUp, boolean isWhipping) {
         super(name, price);
         this.size = size;
         this.addShot = addShot;
@@ -20,13 +21,14 @@ public class BeverageOptionDTO extends CafeMenuDTO {
         this.isIce = isIce;
         this.isCold = isCold;
         this.isSizeUp = isSizeUp;
+        this.isWhipping = isWhipping;
     }
 
     @Override
     public String toString() {
         return super.toString() + ", size=" + size + ", addShot=" + addShot
-                + ", isSyrup=" + isSyrup + ", isIce=" + isIce
-                + ", isCold=" + isCold + ", isSizeUp=" + isSizeUp;
+                + ", isSyrup=" + isSyrup + ", isIce=" + isIce + ", isCold=" + isCold
+                + ", isSizeUp=" + isSizeUp + ", isWhipping=" + isWhipping;
     }
 
     public String getSize() {
@@ -75,5 +77,13 @@ public class BeverageOptionDTO extends CafeMenuDTO {
 
     public void setSizeUp(boolean isSizeUp) {
         this.isSizeUp = isSizeUp;
+    }
+
+    public boolean isWhipping() {
+        return isWhipping;
+    }
+
+    public void setWhipping(boolean isWhipping) {
+        this.isWhipping = isWhipping;
     }
 }
