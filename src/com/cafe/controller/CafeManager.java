@@ -77,10 +77,12 @@ public class CafeManager {
                      if (icehot == 1) {
                          System.out.println(" ice의 옵션이 선택되었습니다. ");
                          ((Beverage)menulist.get(0)).setCold(true);
+                         showOptionInformation();
                          
                      } else if (icehot == 2) {
                          System.out.println(" hot의 옵션이 선택되었습니다.");
                          ((Beverage)menulist.get(0)).setCold(false);
+                         showOptionInformation();
                      } else {
                          System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
                      }
