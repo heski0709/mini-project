@@ -61,7 +61,7 @@ public class CafeManager {
 
 	public void option() {
 		while (true) {
-
+			System.out.println("============================================");
 			System.out.println(" [1] ice와 hot 둘중 하나를 골라주시길 바랍니다.");
 			System.out.println(" [2] 샷을 추가합니다 + 500원 ");
 			System.out.println(" [3] 휘핑을 추가합니다. ");
@@ -70,73 +70,66 @@ public class CafeManager {
 			System.out.println(" [6] 사이즈를 업 합니다 + 500원 ");
 			System.out.println(" [0] 결제로 넘어가기 ");
 			System.out.println();
+			showOptionInformation();
 			System.out.print(" 원하시는 숫자를 입력해주시길 바랍니다 :  ");
 			int in = sc.nextInt();
 
 			switch (in) {
 
-			case 1: {
-				System.out.print("ice [1] 와 hot [2] 원하는 옵션을 입력해주세요 : ");
-				int icehot = sc.nextInt();
-				sc.nextLine();
+				case 1: {
+					System.out.print("ice [1] 와 hot [2] 원하는 옵션을 입력해주세요 : ");
+					int icehot = sc.nextInt();
+					sc.nextLine();
 
-				if (icehot == 1) {
-					System.out.println(" ice의 옵션이 선택되었습니다. ");
-					((Beverage) menulist.get(0)).setCold(true);
-					showOptionInformation();
+					if (icehot == 1) {
+						System.out.println(" ice의 옵션이 선택되었습니다. ");
+						((Beverage) menulist.get(0)).setCold(true);
+						
 
-
-				} else if (icehot == 2) {
-					System.out.println(" hot의 옵션이 선택되었습니다.");
-					((Beverage) menulist.get(0)).setCold(false);
-					showOptionInformation();
-				} else {
-					System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
+					} else if (icehot == 2) {
+						System.out.println(" hot의 옵션이 선택되었습니다.");
+						((Beverage) menulist.get(0)).setCold(false);
+					} else {
+						System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
+					}
+					break;
 				}
-				break;
-			}
 
-			case 2: {
-				System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
-				((Beverage) menulist.get(0)).setAddShot(((Beverage) menulist.get(0)).getAddShot() + 1);
-				menulist.get(0).setPrice(menulist.get(0).getPrice()+500); 
-				showOptionInformation();
-				break;
-			}
-			case 3: {
-				System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
-				((Beverage) menulist.get(0)).setWhipping(true);
-				showOptionInformation();
-				break;
-			}
-			case 4: {
-				System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
-				((Beverage) menulist.get(0)).setSyrup(true);
-				showOptionInformation();
-				break;
-			}
-			case 5: {
-				System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
-				((Beverage) menulist.get(0)).setIce(true);
-				showOptionInformation();
-				break;
-			}
-			case 6: {
-				System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
-				((Beverage) menulist.get(0)).setSizeUp(true);
-				menulist.get(0).setPrice(menulist.get(0).getPrice()+500); 
-				showOptionInformation();
-				break;
-			}
-			case 0: {
-				showOptionInformation();
-				System.out.println(" 결제 페이지로 넘어가겠습니다. ");
+				case 2: {
+					System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
+					((Beverage) menulist.get(0)).setAddShot(((Beverage) menulist.get(0)).getAddShot() + 1);
+					menulist.get(0).setPrice(menulist.get(0).getPrice() + 500);
+					break;
+				}
+				case 3: {
+					System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
+					((Beverage) menulist.get(0)).setWhipping(true);
+					break;
+				}
+				case 4: {
+					System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
+					((Beverage) menulist.get(0)).setSyrup(true);
+					break;
+				}
+				case 5: {
+					System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
+					((Beverage) menulist.get(0)).setIce(true);
+					break;
+				}
+				case 6: {
+					System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
+					((Beverage) menulist.get(0)).setSizeUp(true);
+					menulist.get(0).setPrice(menulist.get(0).getPrice() + 500);
+					break;
+				}
+				case 0: {
+					System.out.println(" 결제 페이지로 넘어가겠습니다. ");
 
-				payment(menulist.get(0).getPrice());
-				return;
-			}
-			default:
-				System.out.println("숫자를 잘못 입력 하셨습니다.");
+					payment(menulist.get(0).getPrice());
+					return;
+				}
+				default:
+					System.out.println("숫자를 잘못 입력 하셨습니다.");
 
 			}
 		}
@@ -157,29 +150,30 @@ public class CafeManager {
 			int payment = sc.nextInt();
 			sc.nextLine();
 
-
 			switch (payment) {
-			case 1: {
-				System.out.println(menulist.get(0).getPrice() + "원이 정상적으로 결제 되었습니다.");
-				System.out.println(" 포인트" + pointsEarned(menulist.get(0).getPrice()) + "이 적립이 되었습니다.");
-				member.setPoint(member.getPoint()+ pointsEarned(menulist.get(0).getPrice()));
-				System.out.println(" 현재 고객이 가지고 있는 포인트는" + member.getPoint()+ "입니다. ");
-			}
-			return;
-			case 2: {
-				if(member.getGrade().equals("비회원")) {
-				System.out.println(" 비회원일 경우 포인트 사용이 불가능합니다.");
-				break;
+				case 1: {
+					System.out.println(menulist.get(0).getPrice() + "원이 정상적으로 결제 되었습니다.");
+
+					if (!member.getGrade().equals("비회원")) {
+						System.out.println(" 포인트" + pointsEarned(menulist.get(0).getPrice()) + "이 적립이 되었습니다.");
+						member.setPoint(member.getPoint() + pointsEarned(menulist.get(0).getPrice()));
+						System.out.println(" 현재 고객이 가지고 있는 포인트는" + member.getPoint() + "입니다. ");
+					}
+					return;
 				}
-				else {
-					System.out.println("포인트 " + member.getPoint()  + "를 사용하여 할인을 받아"
-							+  (menulist.get(0).getPrice() -member.getPoint() )+ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
+				case 2: {
+					if (member.getGrade().equals("비회원")) {
+						System.out.println(" 비회원일 경우 포인트 사용이 불가능합니다.");
+						break;
+					} else {
+						System.out.println("포인트 " + member.getPoint() + "를 사용하여 할인을 받아"
+								+ (menulist.get(0).getPrice() - member.getPoint()) + "원이 정상적으로 결제가 되었습니다. 감사합니다.");
+					}
+					return;
 				}
-			}
-			return;
-			default:
-				System.out.println(" 숫자를 잘못 입력하셨습니다 다시 입력해주시길 바랍니다 ");
-				System.out.println();
+				default:
+					System.out.println(" 숫자를 잘못 입력하셨습니다 다시 입력해주시길 바랍니다 ");
+					System.out.println();
 			}
 		}
 
@@ -187,13 +181,11 @@ public class CafeManager {
 
 	public int pointsEarned(int price) {
 
-		if(member instanceof GoldMember) {
-			return (int) (price * (((GoldMember)member).getPointAcc()/100));
-		}
-		else if(member instanceof GreenMember) {
-				return (int) (price * (((GreenMember)member).getPointAcc()/100));
-		}
-		else {
+		if (member instanceof GoldMember) {
+			return (int) (price * (((GoldMember) member).getPointAcc() / 100));
+		} else if (member instanceof GreenMember) {
+			return (int) (price * (((GreenMember) member).getPointAcc() / 100));
+		} else {
 			return 0;
 		}
 	}
@@ -214,9 +206,14 @@ public class CafeManager {
 				return;
 			}
 		}
-		
+
+		System.out.println("회원 정보를 찾을 수 없습니다. 비회원으로 로그인합니다.");
 		this.member = new MemberDTO(null, 0, "비회원");
 	}
 
+	public void nonMember() {
+		System.out.println("비회원으로 로그인합니다.");
+		this.member = new MemberDTO(null, 0, "비회원");
+	}
 
 }
