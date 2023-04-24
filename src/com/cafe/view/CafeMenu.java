@@ -11,9 +11,9 @@ import com.cafe.controller.CafeManager;
  * 카페 메뉴를 보여주기 위한 클래스
  */
 public class CafeMenu {
-    Map<Integer, String> menu = new HashMap<>();
-    Scanner sc = new Scanner(System.in);
-    CafeManager cm;
+    private final Map<Integer, String> menu = new HashMap<>();
+    private Scanner sc = new Scanner(System.in);
+    private CafeManager cm;
 
     {
         menu.put(1, "아메리카노");
