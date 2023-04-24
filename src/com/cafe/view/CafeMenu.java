@@ -11,8 +11,17 @@ import com.cafe.controller.CafeManager;
  * 카페 메뉴를 보여주기 위한 클래스
  */
 public class CafeMenu {
+    Map<Integer, String> menu = new HashMap<>();
     Scanner sc = new Scanner(System.in);
     CafeManager cm;
+
+    {
+        menu.put(1, "아메리카노");
+        menu.put(2, "카페라떼");
+        menu.put(3, "바닐라라떼");
+        menu.put(4, "초코라떼");
+        menu.put(5, "아이스티");
+    }
 
     /* 생성자에서 CafeManager 초기화 */
     public CafeMenu() {
@@ -83,7 +92,7 @@ public class CafeMenu {
                     System.out.println("숫자만 입력해주세요.");
                     continue loop;
                 } finally {
-                    sc.nextLine();
+                    sc.nextLine();          // Scanner 버퍼 제거
                 }
 
                 break;
@@ -103,13 +112,6 @@ public class CafeMenu {
     }
 
     public void selectMenu(int num) {
-        Map<Integer, String> menu = new HashMap<>();
-        menu.put(1, "아메리카노");
-        menu.put(2, "카페라떼");
-        menu.put(3, "바닐라라떼");
-        menu.put(4, "초코라떼");
-        menu.put(5, "아이스티");
-
         String name = menu.get(num);
         if (name == null) {
             return;
