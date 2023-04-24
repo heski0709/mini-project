@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import com.cafe.dto.Beverage;
 import com.cafe.dto.CafeMenuDTO;
+import com.cafe.information.GoldMember;
+import com.cafe.information.GreenMember;
 import com.cafe.information.MemberDTO;
 import com.cafe.information.MemberManager;
 
@@ -164,13 +166,13 @@ public class CafeManager {
 			case 1: {
 				System.out.println(paymentPrice + "원이 정상적으로 결제 되었습니다.");
 				System.out.println(" 포인트" + pointsEarned(((Beverage) menulist.get(0)).getPrice()) + "이 적립이 되었습니다.");
-				// setpoint(getpoint + pointsEarned); 멤버의 setpoint
-				System.out.println(" 현재 고객이 가지고 있는 포인트는" + /* get.point ) */ "입니다. ");
+				member.setPoint(member.getPoint()+ pointsEarned(paymentPrice));
+				System.out.println(" 현재 고객이 가지고 있는 포인트는" + member.getPoint()+ "입니다. ");
 			}
 			return;
 			case 2: {
-				System.out.println("포인트 " + /* getpoint */ "를 사용하여 할인을 받아"
-						+ /* (paymentPrice - getpoint() */ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
+				System.out.println("포인트 " + member.getPoint()  + "를 사용하여 할인을 받아"
+						+  (paymentPrice -member.getPoint() )+ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
 			}
 			return;
 			default:
@@ -183,7 +185,15 @@ public class CafeManager {
 
 	public int pointsEarned(int price) {
 
-		return price /* ( get.price * 회원의 적립률을 리턴 ) */;
+		if(member instanceof GoldMember) {
+			return (int) (price * (((GoldMember)member).getPointAcc()/100));
+		}
+		else if(member instanceof GreenMember) {
+				return (int) (price * (((GreenMember)member).getPointAcc()/100));
+		}
+		else {
+			return 0;
+		}
 	}
 
 	public void showOptionInformation() {
