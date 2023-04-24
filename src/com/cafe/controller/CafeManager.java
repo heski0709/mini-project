@@ -81,9 +81,6 @@ public class CafeManager {
 				int icehot = sc.nextInt();
 				sc.nextLine();
 
-
-				payment(paymentPrice);
-
 				if (icehot == 1) {
 					System.out.println(" ice의 옵션이 선택되었습니다. ");
 					((Beverage) menulist.get(0)).setCold(true);
@@ -137,7 +134,7 @@ public class CafeManager {
 				System.out.println(" 결제 페이지로 넘어가겠습니다. ");
 
 				payment(paymentPrice);
-				break;
+				return;
 			}
 			default:
 				System.out.println("숫자를 잘못 입력 하셨습니다.");
