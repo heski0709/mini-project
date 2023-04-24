@@ -40,7 +40,7 @@ public class CafeManager {
         }
 
         int i = 1;
-        System.out.println("====== 선택하신 음료 ======");
+        System.out.println("======= 선택하신 음료 ========");
         for (CafeMenuDTO typeDTO : menulist) {
             System.out.println(i + " : " + typeDTO.getName());
             i++;
@@ -126,7 +126,7 @@ public class CafeManager {
                      System.out.println(" 결제 페이지로 넘어가겠습니다. ");
 
                      payment(paymentPrice);
-                     break;
+                     return;
                  }
                  default:
                      System.out.println("숫자를 잘못 입력 하셨습니다.");
@@ -176,9 +176,9 @@ public class CafeManager {
      }
 
      public void showOptionInformation() {
-         System.out.println("=============================================");
+         System.out.println("=========================================");
          System.out.println("현재 선택하신 메뉴의 옵션은 \n" +((Beverage)menulist.get(0)).toString());
-         System.out.println("=============================================");
+         System.out.println("========================================");
      }
 
 }
