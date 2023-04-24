@@ -71,9 +71,9 @@ public class BeverageOptionDTO extends CafeMenuDTO {
     
     @Override
     public String toString() {
-        return super.toString() + ", size=" + checkSize() + ", addShot=" + addShot
-                + ", isSyrup=" + checkSyrup() + " \nisIce= " + checkICE() + ", isCold=" + checkCold()
-                + ", isWhipping =" + checkWhipping();
+        return super.toString() + ", 현재 사이즈 =" + checkSize() + ", 샷 추가 횟수 =" + addShot
+                + ", 시럽 추가 여부 =" + checkSyrup() + " \n얼음 추가 여부 = " + checkICE() + ", ICE OR HOT=" + checkCold()
+                + ", 휘핑 추가 여부 =" + checkWhipping();
     }
 
     public String getSize() {
