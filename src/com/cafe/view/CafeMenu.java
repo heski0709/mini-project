@@ -62,7 +62,7 @@ public class CafeMenu {
              * 아무 동작을 하지않고 메뉴창으로 넘어감
              */
             switch (num) {
-                case 1: break;
+                case 1: cm.findMember(); break;
                 case 2: break;
                 default: System.out.println("잘못된 숫자를 입력하셨습니다."); continue;
             }
