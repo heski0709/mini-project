@@ -13,13 +13,17 @@ public class CafeMenuDTO {
 
     @Override
     public String toString() {
-        return "name=" + name + ", price=" + price;
+        return "메뉴명 = " + name + "\n가격 = " + price;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
     public int getPrice() {
         return price;
     }

@@ -102,9 +102,12 @@ public class CafeMenu {
 
             if (num == 6) {
                 cm.option();
+                System.out.println("프로그램을 종료합니다. 감사합니다.");
+                return;
             } else if (num == 7) {
                 System.out.println("주문을 취소했습니다.");
                 cm.deleteMenu();
+                return;
             } else {
                 System.out.println("잘못된 숫자를 입력하셨습니다.");
             }
