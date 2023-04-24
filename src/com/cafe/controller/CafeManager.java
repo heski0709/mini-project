@@ -60,7 +60,6 @@ public class CafeManager {
 	}
 
 	public void option() {
-		int paymentPrice = menulist.get(0).getPrice();
 		while (true) {
 
 			System.out.println(" [1] ice와 hot 둘중 하나를 골라주시길 바랍니다.");
@@ -100,7 +99,7 @@ public class CafeManager {
 			case 2: {
 				System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
 				((Beverage) menulist.get(0)).setAddShot(((Beverage) menulist.get(0)).getAddShot() + 1);
-				paymentPrice += 500;
+				menulist.get(0).setPrice(menulist.get(0).getPrice()+500); 
 				showOptionInformation();
 				break;
 			}
@@ -125,7 +124,7 @@ public class CafeManager {
 			case 6: {
 				System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
 				((Beverage) menulist.get(0)).setSizeUp(true);
-				paymentPrice += 500;
+				menulist.get(0).setPrice(menulist.get(0).getPrice()+500); 
 				showOptionInformation();
 				break;
 			}
@@ -133,7 +132,7 @@ public class CafeManager {
 				showOptionInformation();
 				System.out.println(" 결제 페이지로 넘어가겠습니다. ");
 
-				payment(paymentPrice);
+				payment(menulist.get(0).getPrice());
 				return;
 			}
 			default:
@@ -161,15 +160,21 @@ public class CafeManager {
 
 			switch (payment) {
 			case 1: {
-				System.out.println(paymentPrice + "원이 정상적으로 결제 되었습니다.");
-				System.out.println(" 포인트" + pointsEarned(((Beverage) menulist.get(0)).getPrice()) + "이 적립이 되었습니다.");
-				member.setPoint(member.getPoint()+ pointsEarned(paymentPrice));
+				System.out.println(menulist.get(0).getPrice() + "원이 정상적으로 결제 되었습니다.");
+				System.out.println(" 포인트" + pointsEarned(menulist.get(0).getPrice()) + "이 적립이 되었습니다.");
+				member.setPoint(member.getPoint()+ pointsEarned(menulist.get(0).getPrice()));
 				System.out.println(" 현재 고객이 가지고 있는 포인트는" + member.getPoint()+ "입니다. ");
 			}
 			return;
 			case 2: {
-				System.out.println("포인트 " + member.getPoint()  + "를 사용하여 할인을 받아"
-						+  (paymentPrice -member.getPoint() )+ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
+				if(member.getGrade().equals("비회원")) {
+				System.out.println(" 비회원일 경우 포인트 사용이 불가능합니다.");
+				break;
+				}
+				else {
+					System.out.println("포인트 " + member.getPoint()  + "를 사용하여 할인을 받아"
+							+  (menulist.get(0).getPrice() -member.getPoint() )+ "원이 정상적으로 결제가 되었습니다. 감사합니다.");
+				}
 			}
 			return;
 			default:
@@ -206,9 +211,11 @@ public class CafeManager {
 		for (MemberDTO member : memberManager.getMemberlist()) {
 			if (member.getNum().equals(num)) {
 				this.member = member;
-				break;
+				return;
 			}
 		}
+		
+		this.member = new MemberDTO(null, 0, "비회원");
 	}
 
 
