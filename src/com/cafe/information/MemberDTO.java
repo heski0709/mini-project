@@ -1,23 +1,23 @@
 package com.cafe.information;
 
 public class MemberDTO {
-	private int num;
+	private String num;
 	private int point;
 	private String grade;
 	public MemberDTO() {
 		super();
 		
 	}
-	public MemberDTO(int num, int point, String grade) {
+	public MemberDTO(String num, int point, String grade) {
 		super();
 		this.num = num;
 		this.point = point;
 		this.grade = grade;
 	}
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 	public int getPoint() {
