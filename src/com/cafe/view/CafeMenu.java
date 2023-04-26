@@ -31,8 +31,8 @@ public class CafeMenu {
     /* 메뉴 출력 메서드 */
     public void menu() {
         System.out.println("=======================");
-        System.out.println("[1] 회원주문");
-        System.out.println("[2] 비회원주문");
+        System.out.println(" [1] 회원주문");
+        System.out.println(" [2] 비회원주문");
         System.out.println("=======================");
 
         int num;
@@ -44,6 +44,7 @@ public class CafeMenu {
              * 강제종료되지 않고 루프를 돌게 함
              */
             try {
+                System.out.print("실행하실 번호를 입력해주세요 : ");
                 num = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("숫자만 입력해주세요.");
@@ -66,18 +67,17 @@ public class CafeMenu {
                 case 2: cm.nonMember(); break;
                 default: System.out.println("잘못된 숫자를 입력하셨습니다."); continue;
             }
-            
             break;
         }
 
         while (true) {
             System.out.println("=========== 메뉴 ==========");
-            System.out.println("[1] 아메리카노");
-            System.out.println("[2] 카페라떼");
-            System.out.println("[3] 바닐라라떼");
-            System.out.println("[4] 초코라떼");
-            System.out.println("[5] 아이스티");
-            System.out.println("[6] 결정\t   [7] 취소");
+            System.out.println(" [1] 아메리카노");
+            System.out.println(" [2] 카페라떼");
+            System.out.println(" [3] 바닐라라떼");
+            System.out.println(" [4] 초코라떼");
+            System.out.println(" [5] 아이스티");
+            System.out.println(" [6] 결정\t   [7] 취소");
             System.out.println("===========================");
             cm.printMenu();
 
@@ -99,7 +99,7 @@ public class CafeMenu {
                 return;
             } else if (num == 7) {
                 System.out.println("주문을 취소했습니다.");
-                cm.deleteMenu();
+                cm.clearMenu();
                 return;
             } else if (num < 1 || num > 7) {
                 System.out.println("잘못된 숫자를 입력하셨습니다.");
