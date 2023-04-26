@@ -19,6 +19,7 @@ public class CafeManager {
 	private Map<String, Integer> prices = new HashMap<>();
 	private MemberManager memberManager = new MemberManager();
 	private MemberDTO member;
+	int choice;
 
 	/* 초기화 블럭을 이용해 초기값 설정 */
 	{
@@ -58,10 +59,20 @@ public class CafeManager {
 	public void deleteMenu() {
 		menulist.clear();
 	}
+	
+	public void numOption() {
+		printMenu();
+		System.out.print("선택하신 메뉴 중 옵션을 넣을 번호를 입력해주세요 ");
+		choice = sc.nextInt();
+		sc.nextLine();
+		option(choice);
+	}
 
-	public void option() {
+	
+	public void option(int choice) {
+		
 		while (true) {
-
+				
 			System.out.println(" [1] ice와 hot 둘중 하나를 골라주시길 바랍니다.");
 			System.out.println(" [2] 샷을 추가합니다 + 500원 ");
 			System.out.println(" [3] 휘핑을 추가합니다. ");
@@ -71,8 +82,10 @@ public class CafeManager {
 			System.out.println(" [0] 결제로 넘어가기 ");
 			System.out.println();
 			System.out.print(" 원하시는 숫자를 입력해주시길 바랍니다 :  ");
+			
+			
 			int in = sc.nextInt();
-
+			
 			switch (in) {
 
 			case 1: {
@@ -82,13 +95,13 @@ public class CafeManager {
 
 				if (icehot == 1) {
 					System.out.println(" ice의 옵션이 선택되었습니다. ");
-					((Beverage) menulist.get(0)).setCold(true);
+					((Beverage) menulist.get(choice-1)).setCold(true);
 					showOptionInformation();
 
 
 				} else if (icehot == 2) {
 					System.out.println(" hot의 옵션이 선택되었습니다.");
-					((Beverage) menulist.get(0)).setCold(false);
+					((Beverage) menulist.get(choice-1)).setCold(false);
 					showOptionInformation();
 				} else {
 					System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
@@ -98,33 +111,33 @@ public class CafeManager {
 
 			case 2: {
 				System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
-				((Beverage) menulist.get(0)).setAddShot(((Beverage) menulist.get(0)).getAddShot() + 1);
-				menulist.get(0).setPrice(menulist.get(0).getPrice()+500); 
+				((Beverage) menulist.get(choice-1)).setAddShot(((Beverage) menulist.get(choice-1)).getAddShot() + 1);
+				menulist.get(choice-1).setPrice(menulist.get(choice-1).getPrice()+500); 
 				showOptionInformation();
 				break;
 			}
 			case 3: {
 				System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
-				((Beverage) menulist.get(0)).setWhipping(true);
+				((Beverage) menulist.get(choice-1)).setWhipping(true);
 				showOptionInformation();
 				break;
 			}
 			case 4: {
 				System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
-				((Beverage) menulist.get(0)).setSyrup(true);
+				((Beverage) menulist.get(choice-1)).setSyrup(true);
 				showOptionInformation();
 				break;
 			}
 			case 5: {
 				System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
-				((Beverage) menulist.get(0)).setIce(true);
+				((Beverage) menulist.get(choice-1)).setIce(true);
 				showOptionInformation();
 				break;
 			}
 			case 6: {
 				System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
-				((Beverage) menulist.get(0)).setSizeUp(true);
-				menulist.get(0).setPrice(menulist.get(0).getPrice()+500); 
+				((Beverage) menulist.get(choice-1)).setSizeUp(true);
+				menulist.get(choice-1).setPrice(menulist.get(choice-1).getPrice()+500); 
 				showOptionInformation();
 				break;
 			}
@@ -132,7 +145,7 @@ public class CafeManager {
 				showOptionInformation();
 				System.out.println(" 결제 페이지로 넘어가겠습니다. ");
 
-				payment(menulist.get(0).getPrice());
+				payment(menulist.get(choice-1).getPrice());
 				return;
 			}
 			default:
@@ -160,8 +173,8 @@ public class CafeManager {
 
 			switch (payment) {
 			case 1: {
-				System.out.println(menulist.get(0).getPrice() + "원이 정상적으로 결제 되었습니다.");
-				System.out.println(" 포인트" + pointsEarned(menulist.get(0).getPrice()) + "이 적립이 되었습니다.");
+				System.out.println(menulist.get(choice-1).getPrice() + "원이 정상적으로 결제 되었습니다.");
+				System.out.println(" 포인트" + pointsEarned(menulist.get(choice-1).getPrice()) + "이 적립이 되었습니다.");
 				member.setPoint(member.getPoint()+ pointsEarned(menulist.get(0).getPrice()));
 				System.out.println(" 현재 고객이 가지고 있는 포인트는" + member.getPoint()+ "입니다. ");
 			}
