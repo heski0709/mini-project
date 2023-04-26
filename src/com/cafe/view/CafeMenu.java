@@ -70,9 +70,6 @@ public class CafeMenu {
             break;
         }
 
-        
-
-        loop: 
         while (true) {
             System.out.println("=========== 메뉴 ==========");
             System.out.println("[1] 아메리카노");
@@ -84,18 +81,14 @@ public class CafeMenu {
             System.out.println("===========================");
             cm.printMenu();
 
-            while (true) {
-                try {
-                    System.out.print("번호를 입력해주세요 : ");
-                    num = sc.nextInt();
-                } catch (InputMismatchException e) {
-                    System.out.println("숫자만 입력해주세요.");
-                    continue loop;
-                } finally {
-                    sc.nextLine();          // Scanner 버퍼 제거
-                }
-
-                break;
+            try {
+                System.out.print("번호를 입력해주세요 : ");
+                num = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("숫자만 입력해주세요.");
+                continue;
+            } finally {
+                sc.nextLine(); // Scanner 버퍼 제거
             }
 
             selectMenu(num);
