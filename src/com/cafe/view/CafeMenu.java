@@ -108,7 +108,7 @@ public class CafeMenu {
                 System.out.println("주문을 취소했습니다.");
                 cm.deleteMenu();
                 return;
-            } else {
+            } else if (num < 1 || num > 7) {
                 System.out.println("잘못된 숫자를 입력하셨습니다.");
             }
         }
@@ -122,4 +122,5 @@ public class CafeMenu {
 
         cm.addMenu(name);
     }
+    
 }
