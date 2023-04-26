@@ -85,9 +85,10 @@ public class CafeManager {
 			System.out.println(" [4] 시럽을 추가합니다. ");
 			System.out.println(" [5] 얼음을 추가합니다. ");
 			System.out.println(" [6] 사이즈를 업 합니다 + 500원 ");
+			System.out.println(" [7] 선택하신 메뉴로 돌아갑니다.");
 			System.out.println(" [0] 결제로 넘어가기 ");
 			System.out.println();
-			showOptionInformation();
+			showOptionInformation(choice-1);
 			System.out.print(" 원하시는 숫자를 입력해주시길 바랍니다 :  ");
 			
 			
@@ -104,65 +105,66 @@ public class CafeManager {
 						if (icehot == 1) {
 							System.out.println(" ice의 옵션이 선택되었습니다. ");
 							((Beverage) menulist.get(choice - 1)).setCold(true);
-							showOptionInformation();
+							showOptionInformation(choice-1);
 
 
 						} else if (icehot == 2) {
 							System.out.println(" hot의 옵션이 선택되었습니다.");
 							((Beverage) menulist.get(choice - 1)).setCold(false);
-							showOptionInformation();
+							showOptionInformation(choice-1);
 						} else {
 							System.out.println(" 숫자를 잘못 입력하셨습니다 초기메뉴로 돌아갑니다.");
 						}
 					}
+					break;
 
 					case 2: {
 						System.out.println(" 정상적으로 샷이 추가 되었습니다 ");
 						((Beverage) menulist.get(choice - 1))
 								.setAddShot(((Beverage) menulist.get(choice - 1)).getAddShot() + 1);
 						menulist.get(choice - 1).setPrice(menulist.get(choice - 1).getPrice() + 500);
-						showOptionInformation();
-					}
+						showOptionInformation(choice-1);
+					}break;
 					case 3: {
 						System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
 						((Beverage) menulist.get(choice - 1)).setWhipping(true);
-						showOptionInformation();
-					}
+						showOptionInformation(choice-1);
+					}break;
 					case 4: {
 						System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
 						((Beverage) menulist.get(choice - 1)).setSyrup(true);
-						showOptionInformation();
-					}
+						showOptionInformation(choice-1);
+					}break;
 					case 5: {
 						System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
 						((Beverage) menulist.get(choice - 1)).setIce(true);
-						showOptionInformation();
-					}
+						showOptionInformation(choice-1);
+					}break;
 					case 6: {
 						System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
 						((Beverage) menulist.get(choice - 1)).setSizeUp(true);
 						menulist.get(choice - 1).setPrice(menulist.get(choice - 1).getPrice() + 500);
-						showOptionInformation();
-					}
+						showOptionInformation(choice-1);
+					}break;
 					case 7: {
-					}
-					case 0: {
-						showOptionInformation();
-						System.out.println(" 결제 페이지로 넘어가겠습니다. ");
-
-						payment(menulist.get(choice - 1).getPrice());
+						numOption();
 						return;
 					}
-					default:
+					case 0: {
+						System.out.println(" 결제 페이지로 넘어가겠습니다. ");
+						payment();
+						return;
+					}
+					default:{
 						System.out.println("숫자를 잘못 입력 하셨습니다.");
-
+					}
 				}
 
 			}
 		}
 	
 
-	public void payment(int paymentPrice) {
+	public void payment() {
 
 		while (true) {
 
@@ -184,8 +186,7 @@ public class CafeManager {
 					member.setPoint(member.getPoint() + pointsEarned(pay()));
 					System.out.println(" 현재 고객이 가지고 있는 포인트는" + member.getPoint() + "입니다. ");
 
-				}
-					return;
+				} return;
 				case 2: {
 					if (member.getGrade().equals("비회원")) {
 						System.out.println(" 비회원일 경우 포인트 사용이 불가능합니다.");
@@ -194,7 +195,6 @@ public class CafeManager {
 						System.out.println("포인트 " + member.getPoint() + "를 사용하여 할인을 받아"
 								+ (pay() - member.getPoint()) + "원이 정상적으로 결제가 되었습니다. 감사합니다.");
 					}
-
 				}
 					return;
 				default:
@@ -216,9 +216,9 @@ public class CafeManager {
 		}
 	}
 
-	public void showOptionInformation() {
+	public void showOptionInformation(int choice) {
 		System.out.println("=============================================");
-		System.out.println("현재 선택하신 메뉴의 옵션은 \n" + ((Beverage) menulist.get(0)).toString());
+		System.out.println("현재 선택하신 메뉴의 옵션은 \n" + ((Beverage) menulist.get(choice)).toString());
 		System.out.println("=============================================");
 	}
 
@@ -239,7 +239,7 @@ public class CafeManager {
 
 	public int pay() {
 		for (int i = 0; i < menulist.size(); i++) {
-			result = menulist.get(i).getPrice();
+			result += menulist.get(i).getPrice();
 		}
 		return result;
 	}
