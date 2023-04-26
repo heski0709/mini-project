@@ -101,14 +101,14 @@ public class CafeMenu {
             selectMenu(num);
 
             if (num == 6) {
-                cm.option();
+                cm.numOption();
                 System.out.println("프로그램을 종료합니다. 감사합니다.");
                 return;
             } else if (num == 7) {
                 System.out.println("주문을 취소했습니다.");
                 cm.deleteMenu();
                 return;
-            } else {
+            } else if (num < 1 || num > 7) {
                 System.out.println("잘못된 숫자를 입력하셨습니다.");
             }
         }
@@ -122,4 +122,5 @@ public class CafeMenu {
 
         cm.addMenu(name);
     }
+    
 }
