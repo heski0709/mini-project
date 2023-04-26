@@ -94,7 +94,7 @@ public class CafeMenu {
             selectMenu(num);
 
             if (num == 6) {
-                cm.option();
+                cm.numOption();
                 System.out.println("프로그램을 종료합니다. 감사합니다.");
                 return;
             } else if (num == 7) {
@@ -115,4 +115,5 @@ public class CafeMenu {
 
         cm.addMenu(name);
     }
+    
 }
