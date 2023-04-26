@@ -63,7 +63,7 @@ public class CafeMenu {
              */
             switch (num) {
                 case 1: cm.findMember(); break;
-                case 2: break;
+                case 2: cm.nonMember(); break;
                 default: System.out.println("잘못된 숫자를 입력하셨습니다."); continue;
             }
             
