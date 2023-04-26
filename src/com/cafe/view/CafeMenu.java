@@ -59,7 +59,7 @@ public class CafeMenu {
              * CafeManager의 Member타입 변수에 대입시킴
              * 
              * 입력값이 2인 경우 :
-             * 아무 동작을 하지않고 메뉴창으로 넘어감
+             * 비회원으로 Member타입을 설정하고 메뉴로 넘어감
              */
             switch (num) {
                 case 1: cm.findMember(); break;
