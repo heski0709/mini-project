@@ -72,15 +72,7 @@ public class CafeManager {
 
 	
 	public void option(int choice) {
-		
-		while (true) {
-			
-			printMenu();
-			System.out.print("선택 하신 메뉴 중 옵션을 넣을 메뉴를 선택해주세요 : ");
-			choice =sc.nextInt();
-			sc.nextLine();
-			
-			label: 
+	
 			while (true) {
 				
 
@@ -130,35 +122,29 @@ public class CafeManager {
 								.setAddShot(((Beverage) menulist.get(choice - 1)).getAddShot() + 1);
 						menulist.get(choice - 1).setPrice(menulist.get(choice - 1).getPrice() + 500);
 						showOptionInformation();
-						break label1;
 					}
 					case 3: {
 						System.out.println(" 정상적으로 휘핑이 추가 되었습니다. ");
 						((Beverage) menulist.get(choice - 1)).setWhipping(true);
 						showOptionInformation();
-						break label1;
 					}
 					case 4: {
 						System.out.println(" 정상적으로 시럽이 추가 되었습니다.");
 						((Beverage) menulist.get(choice - 1)).setSyrup(true);
 						showOptionInformation();
-						break label1;
 					}
 					case 5: {
 						System.out.println(" 정상적으로 얼음이 추가 되었습니다.");
 						((Beverage) menulist.get(choice - 1)).setIce(true);
 						showOptionInformation();
-						break label1;
 					}
 					case 6: {
 						System.out.println(" 정상적으로 사이즈 업이 되었습니다.");
 						((Beverage) menulist.get(choice - 1)).setSizeUp(true);
 						menulist.get(choice - 1).setPrice(menulist.get(choice - 1).getPrice() + 500);
 						showOptionInformation();
-						break label1;
 					}
 					case 7: {
-						break label;
 					}
 					case 0: {
 						showOptionInformation();
@@ -174,7 +160,7 @@ public class CafeManager {
 
 			}
 		}
-	}
+	
 
 	public void payment(int paymentPrice) {
 
