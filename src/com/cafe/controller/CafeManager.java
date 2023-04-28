@@ -12,10 +12,10 @@ import com.cafe.information.GoldMember;
 import com.cafe.information.GreenMember;
 import com.cafe.information.MemberDTO;
 import com.cafe.information.MemberManager;
+import com.cafe.lib.Pair;
 
 public class CafeManager {
-	private final Map<Integer, String> menu = new HashMap<>();
-	private Map<String, Integer> prices = new HashMap<>();
+	private final Map<Integer, Pair<String, Integer>> menu = new HashMap<>();
 	private MemberManager memberManager = new MemberManager();
 	private List<CafeMenuDTO> menulist;
 	private MemberDTO member;
@@ -23,17 +23,11 @@ public class CafeManager {
 
 	/* 초기화 블럭을 이용해 초기값 설정 */
 	{
-		menu.put(1, "아메리카노");
-		menu.put(2, "카페라떼");
-		menu.put(3, "바닐라라떼");
-		menu.put(4, "초코라떼");
-		menu.put(5, "아이스티");
-
-		prices.put("아메리카노", 2000);
-		prices.put("카페라떼", 3000);
-		prices.put("바닐라라떼", 3500);
-		prices.put("초코라떼", 3500);
-		prices.put("아이스티", 2000);
+		menu.put(1, new Pair<String, Integer>("아메리카노", 2000));
+		menu.put(2, new Pair<String, Integer>("카페라떼", 3000));
+		menu.put(3, new Pair<String, Integer>("바닐라라떼", 3500));
+		menu.put(4, new Pair<String, Integer>("초코라떼", 3500));
+		menu.put(5, new Pair<String, Integer>("아이스티", 2000));
 	}
 
 	public CafeManager() {
@@ -42,14 +36,12 @@ public class CafeManager {
 	}
 
 	public void addMenu(int num) {
-		String name = menu.get(num);
-		int price = 0;
-        if (name == null) {
+		Pair<String, Integer> pair = menu.get(num);
+        if (pair == null) {
             return;
         }
 
-		price = prices.get(name);
-		CafeMenuDTO menu = new Beverage(name, price, "regular");
+		CafeMenuDTO menu = new Beverage(pair.getKey(), pair.getValue(), "regular");
 
 		menulist.add(menu);
 	}
@@ -76,7 +68,10 @@ public class CafeManager {
 		menulist.clear();
 	}
 
-	public void numOption() {
+	public void numOption() throws NullPointerException {
+		if (menulist.size() == 0) {
+			throw new NullPointerException();
+		}
 		while (true) {
 			printMenu();
 			System.out.println(" [0] 결제로 넘어가기 ");

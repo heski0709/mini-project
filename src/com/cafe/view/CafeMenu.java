@@ -84,12 +84,19 @@ public class CafeMenu {
             cm.addMenu(num);
 
             if (num == 6) {
-                cm.numOption();
-                System.out.println("프로그램을 종료합니다. 감사합니다.");
+                try {
+                    cm.numOption();
+                    System.out.println("프로그램을 종료합니다. 감사합니다.");
+                } catch (NullPointerException e) {
+                    System.out.println("선택된 메뉴가 없습니다. 메뉴 추가 후 이용해주세요.");
+                    continue;
+                }
+
                 return;
             } else if (num == 7) {
                 System.out.println("주문을 취소했습니다.");
                 cm.clearMenu();
+
                 return;
             } else if (num < 1 || num > 7) {
                 System.out.println("잘못된 숫자를 입력하셨습니다.");
