@@ -14,14 +14,21 @@ import com.cafe.information.MemberDTO;
 import com.cafe.information.MemberManager;
 
 public class CafeManager {
+	private final Map<Integer, String> menu = new HashMap<>();
 	private Map<String, Integer> prices = new HashMap<>();
-	private List<CafeMenuDTO> menulist;
 	private MemberManager memberManager = new MemberManager();
+	private List<CafeMenuDTO> menulist;
 	private MemberDTO member;
 	private Scanner sc = new Scanner(System.in);
 
 	/* 초기화 블럭을 이용해 초기값 설정 */
 	{
+		menu.put(1, "아메리카노");
+		menu.put(2, "카페라떼");
+		menu.put(3, "바닐라라떼");
+		menu.put(4, "초코라떼");
+		menu.put(5, "아이스티");
+
 		prices.put("아메리카노", 2000);
 		prices.put("카페라떼", 3000);
 		prices.put("바닐라라떼", 3500);
@@ -34,8 +41,14 @@ public class CafeManager {
 		memberManager.init();
 	}
 
-	public void addMenu(String name) {
-		int price = prices.get(name);
+	public void addMenu(int num) {
+		String name = menu.get(num);
+		int price = 0;
+        if (name == null) {
+            return;
+        }
+
+		price = prices.get(name);
 		CafeMenuDTO menu = new Beverage(name, price, "regular");
 
 		menulist.add(menu);
