@@ -1,8 +1,6 @@
 package com.cafe.view;
 
-import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.Map;
 import java.util.Scanner;
 
 import com.cafe.controller.CafeManager;
@@ -11,17 +9,9 @@ import com.cafe.controller.CafeManager;
  * 카페 메뉴를 보여주기 위한 클래스
  */
 public class CafeMenu {
-    private final Map<Integer, String> menu = new HashMap<>();
+    
     private Scanner sc = new Scanner(System.in);
     private CafeManager cm;
-
-    {
-        menu.put(1, "아메리카노");
-        menu.put(2, "카페라떼");
-        menu.put(3, "바닐라라떼");
-        menu.put(4, "초코라떼");
-        menu.put(5, "아이스티");
-    }
 
     /* 생성자에서 CafeManager 초기화 */
     public CafeMenu() {
@@ -91,7 +81,7 @@ public class CafeMenu {
                 sc.nextLine(); // Scanner 버퍼 제거
             }
 
-            selectMenu(num);
+            cm.addMenu(num);
 
             if (num == 6) {
                 cm.numOption();
@@ -105,15 +95,6 @@ public class CafeMenu {
                 System.out.println("잘못된 숫자를 입력하셨습니다.");
             }
         }
-    }
-
-    public void selectMenu(int num) {
-        String name = menu.get(num);
-        if (name == null) {
-            return;
-        }
-
-        cm.addMenu(name);
     }
     
 }
